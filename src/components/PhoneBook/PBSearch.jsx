@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 
 const PBSearch = () => {
   const dispatch = useDispatch()
-  const array = useSelector(state => state.contacts)
+  const array = useSelector(state => state.contacts.items)
   return (
     <>
         {array.length > 0 && <Label>Find contacts by name
