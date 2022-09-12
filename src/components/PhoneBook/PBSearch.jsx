@@ -2,14 +2,15 @@ import { Label } from 'components/styled-comp/styled'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { setFilter } from 'redux/filterSlice'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 
-const PBSearch = (array) => {
+const PBSearch = () => {
   const dispatch = useDispatch()
   // const array = useSelector(state => state.contacts.items)
   return (
     <>
-        {array.length > 0 && <Label>Find contacts by name
+      {/* {array.length > 0 && */}
+        <Label>Find contacts by name
             <input
             type="text"
             name="name"
@@ -18,14 +19,15 @@ const PBSearch = (array) => {
             required
             onChange={(e)=> dispatch(setFilter(e.currentTarget.value))} 
             />
-        </Label>}
+        </Label>
+      {/* } */}
     </>
   )
 }
 
-PBSearch.propTypes = {
-  array: PropTypes.array,
+// PBSearch.propTypes = {
+//   array: PropTypes.array,
 //   onChange: PropTypes.func  
-}
+// }
 
 export default PBSearch
