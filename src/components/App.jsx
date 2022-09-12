@@ -13,17 +13,15 @@ const App = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    // const string = JSON.stringify(contacts)
-    // localStorage.setItem("contactlist", string)
     dispatch(fetchContacts())
   }, [dispatch])
 
   const onFilter = () => {
     if (filter) {
-      const filterredArray = contacts.filter(({ name }) => name.toLowerCase().indexOf(filter.toLowerCase()) > -1)
+      const filterredArray = contacts.items.filter(({ name }) => name.toLowerCase().indexOf(filter.toLowerCase()) > -1)
       return filterredArray
     } 
-    return contacts
+    return contacts.items
   }
 
   const onAddCont = (item) => {
@@ -34,31 +32,18 @@ const App = () => {
     dispatch(removeContact(id))
   }
 
-  // const isExist = (item) => {
-  //   let exist = false
-  //   if (contacts) {
-  //     contacts.forEach(cont => {
-  //       if (cont.name === item.name) {
-  //         return exist = true
-  //       }
-  //     })
-  //   }
-  //   return exist
-  // }
-
   const array = onFilter()
     return (
     <PageContainer>
       <ContentContainer>
           <Section title="Phonebook">
             <PhoneBookForm
-              // isExist={isExist}
               add = {onAddCont}
             />
           </Section>
           <Section title="Contacts">
             <PBSearch/>
-            <List array={array} del={onRemoveCont} />
+            {contacts.loading ? <h3>loading...</h3> : <List array={array} del={onRemoveCont} />}
           </Section>
         </ContentContainer>
       </PageContainer>
