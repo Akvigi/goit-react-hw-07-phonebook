@@ -1,12 +1,12 @@
 import { Label } from 'components/styled-comp/styled'
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setFilter } from 'redux/filterSlice'
 import PropTypes from 'prop-types'
 
-const PBSearch = () => {
+const PBSearch = (array) => {
   const dispatch = useDispatch()
-  const array = useSelector(state => state.contacts.items)
+  // const array = useSelector(state => state.contacts.items)
   return (
     <>
         {array.length > 0 && <Label>Find contacts by name

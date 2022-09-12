@@ -42,7 +42,7 @@ const App = () => {
             />
           </Section>
           <Section title="Contacts">
-            <PBSearch/>
+            {!contacts.loading && <PBSearch array={array} /> />}
             {contacts.loading ? <h3>loading...</h3> : <List array={array} del={onRemoveCont} />}
           </Section>
         </ContentContainer>
